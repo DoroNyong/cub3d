@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
+/*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:19:06 by hjang             #+#    #+#             */
-/*   Updated: 2025/06/13 20:59:33 by hjang            ###   ########.fr       */
+/*   Updated: 2025/10/08 17:41:42 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,20 @@
 
 char	*ft_strjoin(char *s1, char const *s2)
 {
-	char	*tmp;
-	size_t	index;
-	size_t	index2;
-	size_t	s1_len;
-	size_t	s2_len;
+	char	*ptr;
+	int		whole_cnt;
+	int		per_cnt;
 
-	if (!s1 || !s2)
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!ptr)
 		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	tmp = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
-	if (!tmp)
-		return (NULL);
-	index = -1;
-	while (++index < s1_len)
-		tmp[index] = s1[index];
-	index2 = 0;
-	while (index2 < s2_len)
-		tmp[index++] = s2[index2++];
-	tmp[index] = '\0';
-	free(s1);
-	return (tmp);
+	whole_cnt = 0;
+	per_cnt = 0;
+	while (s1[per_cnt] != '\0')
+		ptr[whole_cnt++] = s1[per_cnt++];
+	per_cnt = 0;
+	while (s2[per_cnt] != '\0')
+		ptr[whole_cnt++] = s2[per_cnt++];
+	ptr[whole_cnt] = '\0';
+	return (ptr);
 }

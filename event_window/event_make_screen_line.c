@@ -16,7 +16,7 @@ static void	draw_background_line(t_sl *sl, int x)
 	index = 0;
 	while (index < sl->draw.start)
 	{
-		my_mlx_pixel_put(&sl->pixel, x, index, 0x000080);
+		my_mlx_pixel_put(&sl->pixel, x, index, sl->config.C_color);
 		index++;
 	}
 }
@@ -49,7 +49,7 @@ static void	draw_bottom_line(t_sl *sl, int x)
 {
 	while (sl->draw.start <= sl->data.screen_height)
 	{
-		my_mlx_pixel_put(&sl->pixel, x, sl->draw.start, 0x8B0000);
+		my_mlx_pixel_put(&sl->pixel, x, sl->draw.start, sl->config.F_color);
 		sl->draw.start++;
 	}
 }

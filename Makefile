@@ -6,7 +6,7 @@
 #    By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 15:57:55 by hjang             #+#    #+#              #
-#    Updated: 2025/10/06 16:29:01 by byeolee          ###   ########.fr        #
+#    Updated: 2025/10/08 17:43:20 by byeolee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,9 @@ SRCS = \
 		event_keys/key_move.c \
 		event_keys/key_rotate.c \
 		event_map/map_check.c \
+		event_map/map_check_external.c \
+		event_map/map_check_setting.c \
+		event_map/map_check_internal.c \
 		event_map/map_str_check.c \
 		event_map/map_str_check_validation.c \
 		event_map/map_str_check_setting.c\

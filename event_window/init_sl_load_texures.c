@@ -4,7 +4,7 @@ static void	texture0(t_sl *sl)
 {
 	sl->texture[0].img = mlx_xpm_file_to_image(
 			sl->data.mlx,
-			"./textures/wall_n.xpm",
+			sl->config.NO_path,
 			&(sl->texture[0].width),
 			&(sl->texture[0].height));
 	sl->texture[0].addr = mlx_get_data_addr(
@@ -18,7 +18,7 @@ static void	texture1(t_sl *sl)
 {
 	sl->texture[1].img = mlx_xpm_file_to_image(
 			sl->data.mlx,
-			"./textures/wall_s.xpm",
+			sl->config.SO_path,
 			&(sl->texture[1].width),
 			&(sl->texture[1].height));
 	sl->texture[1].addr = mlx_get_data_addr(
@@ -32,7 +32,7 @@ static void	texture2(t_sl *sl)
 {
 	sl->texture[2].img = mlx_xpm_file_to_image(
 			sl->data.mlx,
-			"./textures/wall_w.xpm",
+			sl->config.WE_path,
 			&(sl->texture[2].width),
 			&(sl->texture[2].height));
 	sl->texture[2].addr = mlx_get_data_addr(
@@ -46,7 +46,7 @@ static void	texture3(t_sl *sl)
 {
 	sl->texture[3].img = mlx_xpm_file_to_image(
 			sl->data.mlx,
-			"./textures/wall_e.xpm",
+			sl->config.EA_path,
 			&(sl->texture[3].width),
 			&(sl->texture[3].height));
 	sl->texture[3].addr = mlx_get_data_addr(
