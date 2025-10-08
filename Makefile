@@ -6,7 +6,7 @@
 #    By: hjang <hjang@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 15:57:55 by hjang             #+#    #+#              #
-#    Updated: 2025/09/26 17:19:15 by hjang            ###   ########.fr        #
+#    Updated: 2025/10/09 05:37:10 by hjang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS = \
 		map_make.c \
 		map_wall_check.c \
 		utils.c \
-		mouse_rotate_bonus.c		
+		mouse_rotate_bonus.c \
+		event_minimap_bonus.c	
 OBJS = $(SRCS:.c=.o)
 
 CC = cc

@@ -6,7 +6,7 @@
 /*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 18:32:17 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/02 15:43:14 by hjang            ###   ########.fr       */
+/*   Updated: 2025/10/09 05:46:54 by hjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void draw_vertical_line(t_sl *sl, int x)
     //     my_mlx_pixel_put(&sl->pixel, x, sl->draw.start, sl->draw.color);
     //     sl->draw.start++;
     // }
-	while (sl->draw.start <= sl->draw.end)
+	while (sl->draw.start <= sl->draw.end - 1)
     {
 		sl->draw.tex_y = (int)sl->draw.tex_pos % sl->texture[sl->draw.tex_dir].height;
 		sl->draw.tex_pos += sl->draw.step;
@@ -64,6 +64,8 @@ void draw_vertical_line(t_sl *sl, int x)
 		my_mlx_pixel_put(&sl->pixel, x, sl->draw.start, sl->draw.color);
 		sl->draw.start++;
     }
+	my_mlx_pixel_put(&sl->pixel, x, sl->draw.start, sl->draw.color);
+	sl->draw.start++;
 	while (sl->draw.start <= sl->data.screen_height)
 	{
 		my_mlx_pixel_put(&sl->pixel, x, sl->draw.start, 0x8B0000);
@@ -187,6 +189,7 @@ void	make_screen(t_sl *sl)
 		draw_vertical_line(sl, x);
 		x++;
 	}
+	draw_minimap(sl);
 	mlx_put_image_to_window(sl->data.mlx, sl->data.win, sl->pixel.img, 0, 0);
 }
 

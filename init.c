@@ -6,7 +6,7 @@
 /*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:45:32 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/02 16:21:22 by hjang            ###   ########.fr       */
+/*   Updated: 2025/10/09 06:26:28 by hjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ void	sl_init(t_sl *sl)
 	sl->mouse.prev_x = -1;
 	sl->mouse.smooth_dx = 0.0;
 	sl->mouse.prev_x = sl->data.screen_width / 2;
+	sl->minimap.fov = (2 * atan(0.66));
+	sl->minimap.num_rays = 200;
+	sl->minimap.ray_step = 0.05;
+	sl->minimap.max_ray_dist = 30;
+	sl->minimap.minimap_scale = 20;
 	load_texures(sl);
 	make_screen(sl);
 }

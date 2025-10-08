@@ -6,7 +6,7 @@
 /*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:27:06 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/02 15:04:42 by hjang            ###   ########.fr       */
+/*   Updated: 2025/10/09 05:55:08 by hjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,14 @@ typedef struct s_texture
 	int		endian;
 }	t_texture;
 
+typedef struct s_minimap
+{
+	double	fov;
+	int		num_rays;
+	double	ray_step;
+	double	max_ray_dist;
+	int		minimap_scale;
+}	t_minimap;
 
 typedef struct s_sl
 {
@@ -143,6 +151,7 @@ typedef struct s_sl
 	t_keys			keys;
 	t_mouse			mouse;
 	t_texture		texture[4];
+	t_minimap		minimap;
 	char			**map;
 }	t_sl;
 
@@ -167,5 +176,7 @@ void	key_rotate_right(t_sl *sl);
 void	make_screen(t_sl *sl);
 int		game_loop(t_sl *sl);
 void	mouse_rotate(t_sl *sl);
+void	draw_minimap(t_sl *sl);
+void	my_mlx_pixel_put(t_pixel *pixel, int x, int y, int color);
 
 #endif
