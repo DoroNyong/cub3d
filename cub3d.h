@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
+/*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:27:06 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/02 15:04:42 by hjang            ###   ########.fr       */
+/*   Updated: 2025/10/08 13:35:41 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_playerinfo
 	double	rot_speed;
 	double	diag_speed;
 }	t_playerinfo;
-
 
 typedef enum e_tex_dir{
 	N,
@@ -132,7 +131,6 @@ typedef struct s_texture
 	int		endian;
 }	t_texture;
 
-
 typedef struct s_sl
 {
 	t_data			data;
@@ -146,16 +144,21 @@ typedef struct s_sl
 	char			**map;
 }	t_sl;
 
-void	map_init(t_sl *sl);
-void	sl_init(t_sl *sl);
-int		key_press(int keycode, t_sl *sl);
-int		mouse_press(int button, int x, int y, void *p);
-void	map_check(t_sl *sl, char *map_name);
-int		map_str_check(t_sl *sl, char *map_name);
-int		map_make(t_sl *sl, char *map_str);
-int		map_wall_check(t_sl *sl);
+//main
+int		main(int argc, char **argv);
 void	free_map(t_sl *sl, int index);
-int		close_window(t_sl *sl);
+
+//event_map
+void	map_check(t_sl *sl, char *map_name);
+int		map_make(t_sl *sl, char *map_str);
+void	map_per_init(t_sl *sl, char *map_str);
+int		map_str_check(t_sl *sl, char *map_name);
+int		map_validation(t_sl *sl, char *map_str);
+void	player_info_set(t_sl *sl, char c);
+void	map_len(t_sl *sl, char *map_str);
+int		map_wall_check(t_sl *sl);
+
+//event_keys
 int		key_press(int keycode, t_sl *sl);
 int		key_release(int keycode, t_sl *sl);
 void	key_move_w(t_sl *sl);
@@ -164,8 +167,21 @@ void	key_move_s(t_sl *sl);
 void	key_move_d(t_sl *sl);
 void	key_rotate_left(t_sl *sl);
 void	key_rotate_right(t_sl *sl);
-void	make_screen(t_sl *sl);
+
+//event_window
+int		close_window(t_sl *sl);
 int		game_loop(t_sl *sl);
+void	map_init(t_sl *sl);
+void	sl_init(t_sl *sl);
+void	load_texures(t_sl *sl);
+void	draw_texture(t_sl *sl, int x);
+void	calculate_maps(t_sl *sl, int x);
+void	make_screen(t_sl *sl);
+void	draw_texture(t_sl *sl, int x);
+void	draw_vertical_line(t_sl *sl, int x);
+
+//event_mouse(bonus)
+void	rotate_player(t_sl *sl, double angle);
 void	mouse_rotate(t_sl *sl);
 
 #endif

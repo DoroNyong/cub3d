@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
+/*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 21:24:11 by hjang             #+#    #+#             */
-/*   Updated: 2025/09/16 16:10:13 by hjang            ###   ########.fr       */
+/*   Updated: 2025/10/08 14:19:34 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-void	exit_with_error(char *message)
+static void	exit_with_error(char *message)
 {
 	printf("Error\n%s\n", message);
 	exit(1);
 }
 
-int	check_map_name(char *map_name)
+static int	check_map_name(char *map_name)
 {
 	int	len;
 
@@ -35,7 +35,7 @@ int	check_map_name(char *map_name)
 	return (1);
 }
 
-char	*read_map(int fd)
+static char	*read_map(int fd)
 {
 	char	buf[42];
 	char	*res;
@@ -64,7 +64,7 @@ char	*read_map(int fd)
 	return (res);
 }
 
-char	*make_map_str(char *map_name)
+static char	*make_map_str(char *map_name)
 {
 	char	*res;
 	int		fd;
@@ -79,7 +79,7 @@ char	*make_map_str(char *map_name)
 void	map_check(t_sl *sl, char *map_name)
 {
 	char	*map_str;
-	
+
 	if (!check_map_name(map_name))
 		exit_with_error("Map name must end with .cub");
 	map_str = make_map_str(map_name);
@@ -90,7 +90,6 @@ void	map_check(t_sl *sl, char *map_name)
 		free(map_str);
 		exit(1);
 	}
-	printf("맵 크기: %d x %d\n", sl->mapinfo.x, sl->mapinfo.y);
 	if (!map_make(sl, map_str))
 	{
 		free(map_str);
