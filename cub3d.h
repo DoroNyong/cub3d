@@ -6,7 +6,7 @@
 /*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:27:06 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/09 05:55:08 by hjang            ###   ########.fr       */
+/*   Updated: 2025/10/29 02:03:55 by hjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,12 @@ typedef struct s_minimap
 	int		minimap_scale;
 }	t_minimap;
 
+typedef struct s_anim
+{
+	int	frame_count;
+	int	corrent_frame;
+}	t_anim;
+
 typedef struct s_sl
 {
 	t_data			data;
@@ -150,8 +156,9 @@ typedef struct s_sl
 	t_draw			draw;
 	t_keys			keys;
 	t_mouse			mouse;
-	t_texture		texture[4];
+	t_texture		texture[12];
 	t_minimap		minimap;
+	t_anim			anim;
 	char			**map;
 }	t_sl;
 
