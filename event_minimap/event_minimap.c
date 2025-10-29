@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   event_minimap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 21:24:11 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/20 15:11:54 by byeolee          ###   ########.fr       */
+/*   Created: 2025/10/09 05:32:57 by hjang             #+#    #+#             */
+/*   Updated: 2025/10/29 17:02:16 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include"../cub3d.h"
 
-void	map_check(t_sl *sl, char *map_name)
+void	draw_minimap(t_sl *sl)
 {
-	char	*full_file;
-	char	**lines;
-
-	map_exception(map_name, &full_file, &lines);
-	parse_config_lines(sl, lines);
-	process_map_lines(sl, lines, full_file);
+	draw_minimap_map(sl);
+	draw_minimap_cha(sl);
+	draw_minimap_fov(sl);
 }

@@ -6,7 +6,7 @@
 #    By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 15:57:55 by hjang             #+#    #+#              #
-#    Updated: 2025/10/08 17:43:20 by byeolee          ###   ########.fr        #
+#    Updated: 2025/10/29 17:21:31 by byeolee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,17 @@ SRCS = \
 		event_window/event_make_screen2.c\
 		event_window/init_map.c \
 		event_window/init_sl.c \
-		event_window/init_sl_load_texures.c \
+		event_window/init_sl_check_tex.c \
+		event_window/init_sl_load_tex.c \
+		event_window/event_close.c \
 		event_keys/key_event.c \
 		event_keys/key_move.c \
 		event_keys/key_rotate.c \
 		event_map/map_check.c \
 		event_map/map_check_external.c \
 		event_map/map_check_setting.c \
+		event_map/map_check_setting_texture.c \
+		event_map/map_check_setting_color.c \
 		event_map/map_check_internal.c \
 		event_map/map_str_check.c \
 		event_map/map_str_check_validation.c \
@@ -35,6 +39,10 @@ SRCS = \
 		event_map/map_make.c \
 		event_map/map_make_init.c \
 		event_map/map_wall_check.c \
+		event_minimap/event_minimap.c\
+		event_minimap/draw_minimap_map.c\
+		event_minimap/draw_minimap_cha.c\
+		event_minimap/draw_minimap_fov.c\
 		utils.c	\
 		event_mouse/mouse_rotate_bonus.c \
 		event_mouse/mouse_rotate_player_bonus.c

@@ -19,6 +19,21 @@ static int	check_map_name(char *map_name)
 	return (1);
 }
 
+static char	*append_to_result(char *res, char *buf)
+{
+	char	*temp;
+
+	temp = res;
+	res = ft_strjoin(res, buf);
+	if (!res)
+	{
+		free(temp);
+		return (NULL);
+	}
+	free(temp);
+	return (res);
+}
+
 static char	*read_map(int fd)
 {
 	char	buf[42];
@@ -41,7 +56,7 @@ static char	*read_map(int fd)
 		else if (read_num == 0)
 			break ;
 		buf[read_num] = '\0';
-		res = ft_strjoin(res, buf);
+		res = append_to_result(res, buf);
 		if (!res)
 			return (NULL);
 	}

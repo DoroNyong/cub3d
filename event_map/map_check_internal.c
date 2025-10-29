@@ -25,13 +25,19 @@ static char	*concatenate_map_lines(char **lines)
 	int		i;
 
 	map_only_str = ft_strdup("");
+	if (!map_only_str)
+		return (NULL);
 	i = 0;
 	while (lines[i])
 	{
 		if (is_map_line(lines[i]))
 		{
-			temp = ft_strjoin(map_only_str, lines[i]);
+			temp = map_only_str;
+			map_only_str = ft_strjoin(temp, lines[i]);
+			free(temp);
+			temp = map_only_str;
 			map_only_str = ft_strjoin(temp, "\n");
+			free(temp);
 		}
 		free(lines[i]);
 		i++;

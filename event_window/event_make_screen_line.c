@@ -23,20 +23,23 @@ static void	draw_background_line(t_sl *sl, int x)
 
 static void	draw_texture_line(t_sl *sl, int x)
 {
-	sl->draw.step = 1.0 * sl->texture[sl->draw.tex_dir].height \
-		/ sl->draw.line_height;
+	sl->draw.step = 1.0 * sl->texture[sl->draw.tex_dir * 3 + \
+		sl->anim.corrent_frame].height / sl->draw.line_height;
 	sl->draw.tex_pos = (sl->draw.start - sl->data.screen_height \
 		/ 2 + sl->draw.line_height / 2) * sl->draw.step;
 	while (sl->draw.start <= sl->draw.end - 1)
 	{
-		sl->draw.tex_y = (int)sl->draw.tex_pos \
-			% sl->texture[sl->draw.tex_dir].height;
+		sl->draw.tex_y = (int)sl->draw.tex_pos % \
+			sl->texture[sl->draw.tex_dir * 3 + sl->anim.corrent_frame].height;
 		sl->draw.tex_pos += sl->draw.step;
-		sl->draw.tex_pixel = sl->texture[sl->draw.tex_dir].addr \
-			+ (sl->draw.tex_y \
-			* sl->texture[sl->draw.tex_dir].line_length \
-			+ sl->draw.tex_x \
-			* (sl->texture[sl->draw.tex_dir].bits_per_pixel / 8));
+		sl->draw.tex_pixel = sl->texture[sl->draw.tex_dir * 3 + \
+			sl->anim.corrent_frame].addr + \
+			(sl->draw.tex_y * \
+			sl->texture[sl->draw.tex_dir * 3 + \
+				sl->anim.corrent_frame].line_length + \
+			sl->draw.tex_x * \
+			(sl->texture[sl->draw.tex_dir * 3 + \
+				sl->anim.corrent_frame].bits_per_pixel / 8));
 		sl->draw.color = *(unsigned int *)sl->draw.tex_pixel;
 		my_mlx_pixel_put(&sl->pixel, x, sl->draw.start, sl->draw.color);
 		sl->draw.start++;

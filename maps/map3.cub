@@ -1,0 +1,12 @@
+111111
+111011
+1E0001
+110101
+111111
+
+NO ./textures/wall_n.xpm
+SO ./textures/wall_s.xpm
+WE ./textures/wall_w.xpm
+EA ./textures/wall_e.xpm
+F 020,100,0
+C 020,50,150

@@ -101,5 +101,6 @@ void	make_screen(t_sl *sl)
 		draw_texture(sl, x);
 		x++;
 	}
+	draw_minimap(sl);
 	mlx_put_image_to_window(sl->data.mlx, sl->data.win, sl->pixel.img, 0, 0);
 }

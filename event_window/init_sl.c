@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:45:32 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/08 17:27:58 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/10/29 17:12:47 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ static void	sl_init_etc(t_sl *sl)
 
 void	sl_init(t_sl *sl)
 {
+	check_tex(sl);
 	sl_init_data(sl);
 	sl_init_keys(sl);
 	sl_init_mouse(sl);
 	sl_init_etc(sl);
-	load_texures(sl);
+	sl_init_minimap(sl);
+	load_tex(sl);
 	make_screen(sl);
 }
