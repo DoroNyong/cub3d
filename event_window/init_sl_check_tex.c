@@ -1,77 +1,43 @@
 #include "../cub3d.h"
 
-static void	no_check(t_sl *sl)
+static void	check_texture_file(char *path)
 {
-	int		fd;
-	char	*file;
+	int	fd;
+	int	len;
 
-	file = sl->config.NO_path;
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
+	len = ft_strlen(path);
+	if (len < 4 || ft_strncmp(path + len - 4, ".xpm", 4) != 0)
 	{
-		printf("Error\n'NO' texture file error.\n");
-		free(sl->config.NO_path);
+		printf("Error\nTexture file must have .xpm extension: %s\n", path);
 		exit(1);
 	}
-	else
-		close(fd);
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("Error\nCannot open texture file: %s\n", path);
+		exit(1);
+	}
+	close(fd);
 }
 
-static void	so_check(t_sl *sl)
+static void	check_texdir(char **paths, int count)
 {
-	int		fd;
-	char	*file;
+	int	i;
 
-	file = sl->config.SO_path;
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
+	if (count == 0)
+		return ;
+	i = 0;
+	while (i < count)
 	{
-		printf("Error\n'SO' texture file error.\n");
-		free(sl->config.SO_path);
-		exit(1);
+		check_texture_file(paths[i]);
+		i++;
 	}
-	else
-		close(fd);
-}
-
-static void	we_check(t_sl *sl)
-{
-	int		fd;
-	char	*file;
-
-	file = sl->config.WE_path;
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-	{
-		printf("Error\n'WE' texture file error.\n");
-		free(sl->config.WE_path);
-		exit(1);
-	}
-	else
-		close(fd);
-}
-
-static void	ea_check(t_sl *sl)
-{
-	int		fd;
-	char	*file;
-
-	file = sl->config.EA_path;
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-	{
-		printf("Error\n'EA' texture file error.\n");
-		free(sl->config.EA_path);
-		exit(1);
-	}
-	else
-		close(fd);
 }
 
 void	check_tex(t_sl *sl)
 {
-	no_check(sl);
-	so_check(sl);
-	we_check(sl);
-	ea_check(sl);
+	check_texdir(sl->config.no_path, sl->config.no_count);
+	check_texdir(sl->config.so_path, sl->config.so_count);
+	check_texdir(sl->config.we_path, sl->config.we_count);
+	check_texdir(sl->config.ea_path, sl->config.ea_count);
 }

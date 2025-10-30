@@ -2,6 +2,5 @@
 42cursus
 
 #추가할 내용
-.cub에서 EA ./같은 주소를 여러개 넣을 경우 애니메이션 스프라이트로 실행하게 할 것
--주소가 없을 경우 error
--주소가 최대 몇개까지?
+norm 일부
+valgrind still reachable

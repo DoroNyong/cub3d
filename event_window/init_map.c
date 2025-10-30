@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:45:32 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/29 15:39:26 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/10/30 19:08:46 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,23 @@
 
 void	map_init(t_sl *sl)
 {
+	t_config	config;
+
+	sl->config = config;
 	sl->mapinfo.x = 0;
 	sl->mapinfo.y = 0;
 	sl->mapinfo.player_exists = 0;
 	sl->map = NULL;
-	sl->config.NO_path = NULL;
-	sl->config.SO_path = NULL;
-	sl->config.WE_path = NULL;
-	sl->config.EA_path = NULL;
-	sl->config.C_color = -1;
-	sl->config.F_color = -1;
+	sl->config.no_path = NULL;
+	sl->config.so_path = NULL;
+	sl->config.we_path = NULL;
+	sl->config.ea_path = NULL;
+	sl->config.no_count = 0;
+	sl->config.so_count = 0;
+	sl->config.we_count = 0;
+	sl->config.ea_count = 0;
+	sl->config.c_color = -1;
+	sl->config.f_color = -1;
 }
 
 void	sl_init_minimap(t_sl *sl)

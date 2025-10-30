@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:27:06 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/29 17:36:46 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/10/30 19:08:46 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,17 +143,21 @@ typedef struct s_rgb
 {
 	int	r;
 	int	g;
-	int	b; 
+	int	b;
 }	t_rgb;
 
 typedef struct s_config
 {
-	char	*NO_path;
-	char	*SO_path;
-	char	*WE_path;
-	char	*EA_path;
-	int		F_color;
-	int		C_color;
+	char	**no_path;
+	char	**so_path;
+	char	**we_path;
+	char	**ea_path;
+	int		no_count;
+	int		so_count;
+	int		we_count;
+	int		ea_count;
+	int		f_color;
+	int		c_color;
 }	t_config;
 
 typedef struct s_minimap
@@ -169,6 +173,8 @@ typedef struct s_anim
 {
 	int	frame_count;
 	int	corrent_frame;
+	int	frame_delay;
+	int	frame_counter;
 }	t_anim;
 
 typedef struct s_sl
@@ -180,14 +186,15 @@ typedef struct s_sl
 	t_draw			draw;
 	t_keys			keys;
 	t_mouse			mouse;
-	t_texture		texture[12];
+	t_texture		*textures;
+	int				tex_counts[4];
+	int				tex_offsets[4];
+	int				total_tex_count;
 	t_minimap		minimap;
 	t_anim			anim;
 	t_config		config;
 	char			**map;
 }	t_sl;
-
-
 
 //main
 int		main(int argc, char **argv);
@@ -198,7 +205,7 @@ void	map_check(t_sl *sl, char *map_name);
 void	map_exception(char *map_name, char **full_file, char ***lines);
 void	parse_config_lines(t_sl *sl, char **lines);
 char	*skip_whitespace(char *str);
-void	parsing_texture(t_sl *sl, char **lines);
+void	parsing_texture(t_sl *sl, char **line);
 void	parsing_colors(t_sl *sl, char **lines);
 void	process_map_lines(t_sl *sl, char **lines, char *full_file_str);
 int		map_make(t_sl *sl, char *map_str);

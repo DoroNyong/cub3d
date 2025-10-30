@@ -6,7 +6,7 @@
 #    By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 15:57:55 by hjang             #+#    #+#              #
-#    Updated: 2025/10/29 17:21:31 by byeolee          ###   ########.fr        #
+#    Updated: 2025/10/30 14:50:23 by byeolee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ SRCS = \
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = 
 
 MLX_DIR = minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx.a

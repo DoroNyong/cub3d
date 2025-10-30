@@ -15,18 +15,18 @@ static void	handle_error(const char *message)
 
 static void	checking_parsing(t_sl *sl)
 {
-	if (sl->config.NO_path == NULL)
-		handle_error("NO_path is missing.");
-	if (sl->config.SO_path == NULL)
-		handle_error("SO_path is missing.");
-	if (sl->config.WE_path == NULL)
-		handle_error("WE_path is missing.");
-	if (sl->config.EA_path == NULL)
-		handle_error("EA_path is missing.");
-	if (sl->config.F_color == -1)
-		handle_error("F_color is missing.");
-	if (sl->config.C_color == -1)
-		handle_error("C_color is missing.");
+	if (sl->config.no_count == 0)
+		handle_error("no_path is missing.");
+	if (sl->config.so_count == 0)
+		handle_error("so_path is missing.");
+	if (sl->config.we_count == 0)
+		handle_error("we_path is missing.");
+	if (sl->config.ea_count == 0)
+		handle_error("ea_path is missing.");
+	if (sl->config.f_color == -1)
+		handle_error("f_color is missing.");
+	if (sl->config.c_color == -1)
+		handle_error("c_color is missing.");
 }
 
 void	parse_config_lines(t_sl *sl, char **lines)

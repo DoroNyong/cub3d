@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:26:47 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/08 17:27:59 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/10/30 19:34:27 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 			printf("Error\nOnly one map allowed.\n");
 		return (0);
 	}
+	ft_bzero(&sl, sizeof(t_sl));
 	map_init(&sl);
 	map_check(&sl, argv[1]);
 	sl_init(&sl);

@@ -39,9 +39,9 @@ void	parsing_colors(t_sl *sl, char **lines)
 	{
 		line = skip_whitespace(lines[i]);
 		if (ft_strncmp(line, "F ", 2) == 0)
-			parse_color(&sl->config.F_color, line + 2);
+			parse_color(&sl->config.f_color, line + 2);
 		else if (ft_strncmp(line, "C ", 2) == 0)
-			parse_color(&sl->config.C_color, line + 2);
+			parse_color(&sl->config.c_color, line + 2);
 		i++;
 	}
 }
