@@ -6,16 +6,16 @@
 #    By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 15:57:55 by hjang             #+#    #+#              #
-#    Updated: 2025/10/30 14:50:23 by byeolee          ###   ########.fr        #
+#    Updated: 2025/11/05 17:18:50 by byeolee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
-SRCS = \
-		main.c \
+SRCS =	main.c \
 		event_window/event.c \
 		event_window/event_make_screen_line.c\
+		event_window/event_make_screen_line_per.c\
 		event_window/event_make_screen.c\
 		event_window/event_make_screen2.c\
 		event_window/init_map.c \
@@ -49,7 +49,7 @@ SRCS = \
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = 
+CFLAGS = -Wall -Wextra -Werror -g
 
 MLX_DIR = minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx.a

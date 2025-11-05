@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:45:32 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/30 19:08:46 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/05 17:23:49 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	map_init(t_sl *sl)
 {
-	t_config	config;
-
-	sl->config = config;
 	sl->mapinfo.x = 0;
 	sl->mapinfo.y = 0;
 	sl->mapinfo.player_exists = 0;
 	sl->map = NULL;
+	sl->textures = NULL;
+	sl->data.mlx = NULL;
+	sl->data.win = NULL;
+	sl->pixel.img = NULL;
 	sl->config.no_path = NULL;
 	sl->config.so_path = NULL;
 	sl->config.we_path = NULL;

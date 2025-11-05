@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:27:06 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/30 19:08:46 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/05 17:10:21 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,7 @@ typedef struct s_sl
 //main
 int		main(int argc, char **argv);
 void	free_map(t_sl *sl, int index);
+void	free_texture_paths(t_sl *sl);
 
 //event_map
 void	map_check(t_sl *sl, char *map_name);
@@ -242,6 +243,9 @@ void	calculate_maps(t_sl *sl, int x);
 void	make_screen(t_sl *sl);
 void	draw_texture(t_sl *sl, int x);
 void	draw_vertical_line(t_sl *sl, int x);
+void	draw_background_line(t_sl *sl, int x);
+void	draw_textures_line(t_sl *sl, int x);
+void	draw_bottom_line(t_sl *sl, int x);
 void	my_mlx_pixel_put(t_pixel *pixel, int x, int y, int color);
 
 //event_mouse(bonus)

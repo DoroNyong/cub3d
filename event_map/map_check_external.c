@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_check_external.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/05 16:45:51 by byeolee           #+#    #+#             */
+/*   Updated: 2025/11/05 16:45:51 by byeolee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 static int	check_map_name(char *map_name)
@@ -92,6 +104,7 @@ void	map_exception(char *map_name, char **full_file, char ***lines)
 		exit(1);
 	}
 	*lines = ft_split(*full_file, '\n');
+	free(*full_file);
 	if (!*lines)
 	{
 		printf("Error\n%s\n", "Map read lines failed");

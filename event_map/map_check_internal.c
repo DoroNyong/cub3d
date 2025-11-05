@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_check_internal.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/05 16:45:54 by byeolee           #+#    #+#             */
+/*   Updated: 2025/11/05 16:46:29 by byeolee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 static int	is_map_line(char *line)
@@ -60,7 +72,6 @@ static void	create_map(t_sl *sl, char *map_only_str, char *full_file)
 		free(map_only_str);
 		exit(1);
 	}
-	free(full_file);
 	free(map_only_str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:45:32 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/30 18:25:40 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/05 17:11:53 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	sl_init_mouse(t_sl *sl)
 	sl->mouse.prev_x = -1;
 	sl->mouse.smooth_dx = 0.0;
 	sl->mouse.prev_x = sl->data.screen_width / 2;
-	mlx_mouse_hide(sl->data.mlx, sl->data.win);
+//	mlx_mouse_hide(sl->data.mlx, sl->data.win);
 }
 
 static void	sl_init_etc(t_sl *sl)

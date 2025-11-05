@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_sl_load_tex.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/05 17:17:23 by byeolee           #+#    #+#             */
+/*   Updated: 2025/11/05 17:17:58 by byeolee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 static int	load_single_texture(t_sl *sl, t_texture *texture, char *path)
@@ -35,10 +47,8 @@ static void	load_pertex(t_sl *sl, char **paths, int count, int *tex_idx)
 	}
 }
 
-void	load_tex(t_sl *sl)
+static void	set_texture(t_sl *sl)
 {
-	int	tex_index;
-
 	sl->total_tex_count = sl->config.no_count + sl->config.so_count
 		+ sl->config.we_count + sl->config.ea_count;
 	if (sl->total_tex_count == 0)
@@ -53,16 +63,34 @@ void	load_tex(t_sl *sl)
 	sl->tex_offsets[N] = 0;
 	sl->tex_offsets[S] = sl->config.no_count;
 	sl->tex_offsets[W] = sl->config.no_count + sl->config.so_count;
-	sl->tex_offsets[E] = sl->config.no_count + sl->config.so_count + sl->config.we_count;
+	sl->tex_offsets[E] = sl->config.no_count + sl->config.so_count + \
+		sl->config.we_count;
+}
+
+static void	load_textures(t_sl *sl)
+{
+	int	tex_index;
+
+	tex_index = 0;
+	if (sl->total_tex_count == 0)
+	{
+		sl->textures = NULL;
+		return ;
+	}
 	sl->textures = (t_texture *)malloc(sizeof(t_texture) * sl->total_tex_count);
 	if (!sl->textures)
 	{
 		printf("Error\nFailed to allocate memory for textures.\n");
 		exit(1);
 	}
-	tex_index = 0;
 	load_pertex(sl, sl->config.no_path, sl->config.no_count, &tex_index);
 	load_pertex(sl, sl->config.so_path, sl->config.so_count, &tex_index);
 	load_pertex(sl, sl->config.we_path, sl->config.we_count, &tex_index);
 	load_pertex(sl, sl->config.ea_path, sl->config.ea_count, &tex_index);
+}
+
+void	load_tex(t_sl *sl)
+{
+	set_texture(sl);
+	load_textures(sl);
 }
