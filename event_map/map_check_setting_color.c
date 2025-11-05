@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:46:16 by byeolee           #+#    #+#             */
-/*   Updated: 2025/11/05 16:46:31 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/05 18:11:01 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,15 @@ void	parsing_colors(t_sl *sl, char **lines)
 	{
 		line = skip_whitespace(lines[i]);
 		if (ft_strncmp(line, "F ", 2) == 0)
+		{
+			sl->config.f_count++;
 			parse_color(&sl->config.f_color, line + 2);
+		}
 		else if (ft_strncmp(line, "C ", 2) == 0)
+		{
+			sl->config.c_count++;
 			parse_color(&sl->config.c_color, line + 2);
+		}
 		i++;
 	}
 }

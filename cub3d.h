@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:27:06 by hjang             #+#    #+#             */
-/*   Updated: 2025/11/05 17:10:21 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/05 18:12:02 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,8 @@ typedef struct s_config
 	int		ea_count;
 	int		f_color;
 	int		c_color;
+	int		f_count;
+	int		c_count;
 }	t_config;
 
 typedef struct s_minimap

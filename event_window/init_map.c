@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:45:32 by hjang             #+#    #+#             */
-/*   Updated: 2025/11/05 17:23:49 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/05 18:10:00 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	map_init(t_sl *sl)
 	sl->config.ea_count = 0;
 	sl->config.c_color = -1;
 	sl->config.f_color = -1;
+	sl->config.c_count = 0;
+	sl->config.f_count = 0;
 }
 
 void	sl_init_minimap(t_sl *sl)

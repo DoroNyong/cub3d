@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:46:12 by byeolee           #+#    #+#             */
-/*   Updated: 2025/11/05 16:46:13 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/05 18:15:15 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ static void	checking_parsing(t_sl *sl, char **lines)
 		handle_error(sl, lines, "we_path is missing.");
 	if (sl->config.ea_count == 0)
 		handle_error(sl, lines, "ea_path is missing.");
+	if (sl->config.f_count != 1)
+		handle_error(sl, lines, "Enter floor color less or more than one.");
+	if (sl->config.c_count != 1)
+		handle_error(sl, lines, "Enter ceiling color less or more than one.");
 	if (sl->config.f_color == -1)
 		handle_error(sl, lines, "f_color is missing.");
 	if (sl->config.c_color == -1)
