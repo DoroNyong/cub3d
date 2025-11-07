@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   key_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
+/*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 17:53:57 by hjang             #+#    #+#             */
-/*   Updated: 2025/09/24 06:48:53 by hjang            ###   ########.fr       */
+/*   Updated: 2025/10/06 13:07:12 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 void	key_rotate_left(t_sl *sl)
 {

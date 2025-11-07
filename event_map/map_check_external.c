@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   map_check_external.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
+/*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 21:24:11 by hjang             #+#    #+#             */
-/*   Updated: 2025/09/16 16:10:13 by hjang            ###   ########.fr       */
+/*   Created: 2025/11/05 16:45:51 by byeolee           #+#    #+#             */
+/*   Updated: 2025/11/05 16:45:51 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-void	exit_with_error(char *message)
-{
-	printf("Error\n%s\n", message);
-	exit(1);
-}
-
-int	check_map_name(char *map_name)
+static int	check_map_name(char *map_name)
 {
 	int	len;
 
 	len = 0;
 	while (map_name[len])
 		len++;
+	if (len < 5)
+		return (0);
 	if (!(map_name[len - 1] == 'b' && map_name[len - 2] == 'u' \
 		&& map_name[len - 3] == 'c' && map_name[len - 4] == '.'))
 		return (0);
@@ -35,7 +31,22 @@ int	check_map_name(char *map_name)
 	return (1);
 }
 
-char	*read_map(int fd)
+static char	*append_to_result(char *res, char *buf)
+{
+	char	*temp;
+
+	temp = res;
+	res = ft_strjoin(res, buf);
+	if (!res)
+	{
+		free(temp);
+		return (NULL);
+	}
+	free(temp);
+	return (res);
+}
+
+static char	*read_map(int fd)
 {
 	char	buf[42];
 	char	*res;
@@ -57,14 +68,14 @@ char	*read_map(int fd)
 		else if (read_num == 0)
 			break ;
 		buf[read_num] = '\0';
-		res = ft_strjoin(res, buf);
+		res = append_to_result(res, buf);
 		if (!res)
 			return (NULL);
 	}
 	return (res);
 }
 
-char	*make_map_str(char *map_name)
+static char	*make_map_str(char *map_name)
 {
 	char	*res;
 	int		fd;
@@ -72,29 +83,31 @@ char	*make_map_str(char *map_name)
 	fd = open(map_name, O_RDONLY);
 	res = read_map(fd);
 	if (!res)
-		exit_with_error("Map read failed");
+	{
+		printf("Error\n%s\n", "Map read failed");
+		exit(1);
+	}
 	return (res);
 }
 
-void	map_check(t_sl *sl, char *map_name)
+void	map_exception(char *map_name, char **full_file, char ***lines)
 {
-	char	*map_str;
-	
 	if (!check_map_name(map_name))
-		exit_with_error("Map name must end with .cub");
-	map_str = make_map_str(map_name);
-	if (!map_str)
-		exit_with_error("Map read failed");
-	if (!map_str_check(sl, map_str))
 	{
-		free(map_str);
+		printf("Error\n%s\n", "Map name must end with .cub");
 		exit(1);
 	}
-	printf("맵 크기: %d x %d\n", sl->mapinfo.x, sl->mapinfo.y);
-	if (!map_make(sl, map_str))
+	*full_file = make_map_str(map_name);
+	if (!*full_file)
 	{
-		free(map_str);
+		printf("Error\n%s\n", "Map read failed");
 		exit(1);
 	}
-	free(map_str);
+	*lines = ft_split(*full_file, '\n');
+	free(*full_file);
+	if (!*lines)
+	{
+		printf("Error\n%s\n", "Map read lines failed");
+		exit(1);
+	}
 }

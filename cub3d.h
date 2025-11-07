@@ -6,7 +6,7 @@
 /*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:27:06 by hjang             #+#    #+#             */
-/*   Updated: 2025/10/02 15:04:42 by hjang            ###   ########.fr       */
+/*   Updated: 2025/11/07 16:44:24 by hjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,14 @@ typedef struct s_mapinfo
 	int	player_exists;
 }	t_mapinfo;
 
+typedef struct s_ray
+{
+	double	dir_x;
+	double	dir_y;
+	double	angle_start;
+	double	angle_step;
+}	t_ray;
+
 typedef struct s_playerinfo
 {
 	double	pos_x;
@@ -66,7 +74,6 @@ typedef struct s_playerinfo
 	double	rot_speed;
 	double	diag_speed;
 }	t_playerinfo;
-
 
 typedef enum e_tex_dir{
 	N,
@@ -132,6 +139,46 @@ typedef struct s_texture
 	int		endian;
 }	t_texture;
 
+typedef struct s_rgb
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_rgb;
+
+typedef struct s_config
+{
+	char	**no_path;
+	char	**so_path;
+	char	**we_path;
+	char	**ea_path;
+	int		no_count;
+	int		so_count;
+	int		we_count;
+	int		ea_count;
+	int		f_color;
+	int		c_color;
+	int		f_count;
+	int		c_count;
+}	t_config;
+
+typedef struct s_minimap
+{
+	double	fov;
+	int		num_rays;
+	double	ray_step;
+	double	max_ray_dist;
+	int		minimap_scale;
+	int		minimap_inter;
+}	t_minimap;
+
+typedef struct s_anim
+{
+	int	frame_count;
+	int	corrent_frame;
+	int	frame_delay;
+	int	frame_counter;
+}	t_anim;
 
 typedef struct s_sl
 {
@@ -142,30 +189,70 @@ typedef struct s_sl
 	t_draw			draw;
 	t_keys			keys;
 	t_mouse			mouse;
-	t_texture		texture[4];
+	t_texture		*textures;
+	int				tex_counts[4];
+	int				tex_offsets[4];
+	int				total_tex_count;
+	t_minimap		minimap;
+	t_anim			anim;
+	t_config		config;
 	char			**map;
 }	t_sl;
 
-void	map_init(t_sl *sl);
-void	sl_init(t_sl *sl);
-int		key_press(int keycode, t_sl *sl);
-int		mouse_press(int button, int x, int y, void *p);
-void	map_check(t_sl *sl, char *map_name);
-int		map_str_check(t_sl *sl, char *map_name);
-int		map_make(t_sl *sl, char *map_str);
-int		map_wall_check(t_sl *sl);
+//main
+int		main(int argc, char **argv);
 void	free_map(t_sl *sl, int index);
-int		close_window(t_sl *sl);
+void	free_texture_paths(t_sl *sl);
+
+//event_map
+void	map_check(t_sl *sl, char *map_name);
+void	map_exception(char *map_name, char **full_file, char ***lines);
+void	parse_config_lines(t_sl *sl, char **lines);
+char	*skip_whitespace(char *str);
+void	parsing_texture(t_sl *sl, char **line);
+void	parsing_colors(t_sl *sl, char **lines);
+void	process_map_lines(t_sl *sl, char **lines);
+int		map_make(t_sl *sl, char *map_str);
+void	map_per_init(t_sl *sl, char *map_str);
+int		map_str_check(t_sl *sl, char *map_name);
+int		map_validation(t_sl *sl, char *map_str);
+void	player_info_set(t_sl *sl, char c);
+void	map_len(t_sl *sl, char *map_str);
+int		map_wall_check(t_sl *sl);
+
+//event_minimap(bonus)
+void	draw_minimap(t_sl *sl);
+void	draw_minimap_map(t_sl *sl);
+void	draw_minimap_cha(t_sl *sl);
+void	draw_minimap_fov(t_sl *sl);
+
+//event_keys
 int		key_press(int keycode, t_sl *sl);
 int		key_release(int keycode, t_sl *sl);
-void	key_move_w(t_sl *sl);
-void	key_move_a(t_sl *sl);
-void	key_move_s(t_sl *sl);
-void	key_move_d(t_sl *sl);
+void	key_move(t_sl *sl);
 void	key_rotate_left(t_sl *sl);
 void	key_rotate_right(t_sl *sl);
-void	make_screen(t_sl *sl);
+
+//event_window
+int		close_window(t_sl *sl);
 int		game_loop(t_sl *sl);
+void	map_init(t_sl *sl);
+void	sl_init(t_sl *sl);
+void	sl_init_minimap(t_sl *sl);
+void	check_tex(t_sl *sl);
+void	load_tex(t_sl *sl);
+void	draw_texture(t_sl *sl, int x);
+void	calculate_maps(t_sl *sl, int x);
+void	make_screen(t_sl *sl);
+void	draw_texture(t_sl *sl, int x);
+void	draw_vertical_line(t_sl *sl, int x);
+void	draw_background_line(t_sl *sl, int x);
+void	draw_textures_line(t_sl *sl, int x);
+void	draw_bottom_line(t_sl *sl, int x);
+void	my_mlx_pixel_put(t_pixel *pixel, int x, int y, int color);
+
+//event_mouse(bonus)
+void	rotate_player(t_sl *sl, double angle);
 void	mouse_rotate(t_sl *sl);
 
 #endif

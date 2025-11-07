@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_wall_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
+/*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:33:42 by hjang             #+#    #+#             */
-/*   Updated: 2025/09/26 17:15:10 by hjang            ###   ########.fr       */
+/*   Updated: 2025/10/08 17:26:37 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-int	check_surrounded(t_sl *sl, int x, int y)
+static int	check_surrounded(t_sl *sl, int x, int y)
 {
 	int	dx;
 	int	dy;
@@ -38,7 +38,7 @@ int	check_surrounded(t_sl *sl, int x, int y)
 	return (1);
 }
 
-int	is_surrounded(t_sl *sl, int x, int y)
+static int	is_surrounded(t_sl *sl, int x, int y)
 {
 	char	c;
 
@@ -63,7 +63,7 @@ int	map_wall_check(t_sl *sl)
 		{
 			if (!is_surrounded(sl, x, y))
 			{
-				printf("Error: map not closed at (%d, %d)\n", x, y);
+				printf("Error\nMap not closed at (%d, %d)\n", x, y);
 				return (0);
 			}
 			y++;

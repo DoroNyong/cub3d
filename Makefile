@@ -3,28 +3,49 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hjang <hjang@student.42.fr>                +#+  +:+       +#+         #
+#    By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 15:57:55 by hjang             #+#    #+#              #
-#    Updated: 2025/09/26 17:19:15 by hjang            ###   ########.fr        #
+#    Updated: 2025/11/05 17:18:50 by byeolee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
-SRCS = \
-		event.c \
-		init.c \
-		key_event.c \
-		key_move.c \
-		key_rotate.c \
-		main.c \
-		map_check.c \
-		map_str_check.c \
-		map_make.c \
-		map_wall_check.c \
-		utils.c \
-		mouse_rotate_bonus.c		
+SRCS =	main.c \
+		event_window/event.c \
+		event_window/event_make_screen_line.c\
+		event_window/event_make_screen_line_per.c\
+		event_window/event_make_screen.c\
+		event_window/event_make_screen2.c\
+		event_window/init_map.c \
+		event_window/init_sl.c \
+		event_window/init_sl_check_tex.c \
+		event_window/init_sl_load_tex.c \
+		event_window/event_close.c \
+		event_keys/key_event.c \
+		event_keys/key_move.c \
+		event_keys/key_rotate.c \
+		event_map/map_check.c \
+		event_map/map_check_external.c \
+		event_map/map_check_setting.c \
+		event_map/map_check_setting_texture.c \
+		event_map/map_check_setting_color.c \
+		event_map/map_check_internal.c \
+		event_map/map_str_check.c \
+		event_map/map_str_check_validation.c \
+		event_map/map_str_check_setting.c\
+		event_map/map_str_check_len.c\
+		event_map/map_make.c \
+		event_map/map_make_init.c \
+		event_map/map_wall_check.c \
+		event_minimap/event_minimap.c\
+		event_minimap/draw_minimap_map.c\
+		event_minimap/draw_minimap_cha.c\
+		event_minimap/draw_minimap_fov.c\
+		utils.c	\
+		event_mouse/mouse_rotate_bonus.c \
+		event_mouse/mouse_rotate_player_bonus.c
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
