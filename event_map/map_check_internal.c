@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:45:54 by byeolee           #+#    #+#             */
-/*   Updated: 2025/11/05 16:46:29 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/07 15:38:30 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,27 +58,27 @@ static char	*concatenate_map_lines(char **lines)
 	return (map_only_str);
 }
 
-static void	create_map(t_sl *sl, char *map_only_str, char *full_file)
+static void	create_map(t_sl *sl, char *map_only_str)
 {
 	if (!map_str_check(sl, map_only_str))
 	{
-		free(full_file);
+		free_texture_paths(sl);
 		free(map_only_str);
 		exit(1);
 	}
 	if (!map_make(sl, map_only_str))
 	{
-		free(full_file);
+		free_texture_paths(sl);
 		free(map_only_str);
 		exit(1);
 	}
 	free(map_only_str);
 }
 
-void	process_map_lines(t_sl *sl, char **lines, char *full_file)
+void	process_map_lines(t_sl *sl, char **lines)
 {
 	char	*map_only_str;
 
 	map_only_str = concatenate_map_lines(lines);
-	create_map(sl, map_only_str, full_file);
+	create_map(sl, map_only_str);
 }

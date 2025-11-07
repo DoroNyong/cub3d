@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:27:06 by hjang             #+#    #+#             */
-/*   Updated: 2025/11/05 18:12:02 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/07 15:21:18 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,7 @@ void	parse_config_lines(t_sl *sl, char **lines);
 char	*skip_whitespace(char *str);
 void	parsing_texture(t_sl *sl, char **line);
 void	parsing_colors(t_sl *sl, char **lines);
-void	process_map_lines(t_sl *sl, char **lines, char *full_file_str);
+void	process_map_lines(t_sl *sl, char **lines);
 int		map_make(t_sl *sl, char *map_str);
 void	map_per_init(t_sl *sl, char *map_str);
 int		map_str_check(t_sl *sl, char *map_name);

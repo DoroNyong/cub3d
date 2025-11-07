@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:46:19 by byeolee           #+#    #+#             */
-/*   Updated: 2025/11/05 16:46:20 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/07 15:25:07 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	parse_texture(char ***texture_paths, int *count, char *line)
 	trimmed_path = ft_strtrim(line, " \t");
 	if (!trimmed_path)
 	{
+		free(trimmed_path);
 		printf("Error\n%s\n", "Failed to allocate memory for texture path.");
 		exit(1);
 	}
