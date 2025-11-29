@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:46:19 by byeolee           #+#    #+#             */
-/*   Updated: 2025/11/07 15:25:07 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/29 13:20:03 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,27 @@ static void	parse_texture(char ***texture_paths, int *count, char *line)
 	(*count)++;
 }
 
-void	parsing_texture(t_sl *sl, char **lines)
+int	parsing_texture(t_sl *sl, char *line)
 {
-	int		i;
-	char	*line;
-
-	i = 0;
-	while (lines[i])
+	if (ft_strncmp(line, "NO ", 3) == 0)
 	{
-		line = skip_whitespace(lines[i]);
-		if (ft_strncmp(line, "NO ", 3) == 0)
-			parse_texture(&sl->config.no_path, &sl->config.no_count, line + 3);
-		else if (ft_strncmp(line, "SO ", 3) == 0)
-			parse_texture(&sl->config.so_path, &sl->config.so_count, line + 3);
-		else if (ft_strncmp(line, "WE ", 3) == 0)
-			parse_texture(&sl->config.we_path, &sl->config.we_count, line + 3);
-		else if (ft_strncmp(line, "EA ", 3) == 0)
-			parse_texture(&sl->config.ea_path, &sl->config.ea_count, line + 3);
-		i++;
+		parse_texture(&sl->config.no_path, &sl->config.no_count, line + 3);
+		return (1);
 	}
+	else if (ft_strncmp(line, "SO ", 3) == 0)
+	{
+		parse_texture(&sl->config.so_path, &sl->config.so_count, line + 3);
+		return (1);
+	}
+	else if (ft_strncmp(line, "WE ", 3) == 0)
+	{
+		parse_texture(&sl->config.we_path, &sl->config.we_count, line + 3);
+		return (1);
+	}
+	else if (ft_strncmp(line, "EA ", 3) == 0)
+	{
+		parse_texture(&sl->config.ea_path, &sl->config.ea_count, line + 3);
+		return (1);
+	}
+	return (0);
 }

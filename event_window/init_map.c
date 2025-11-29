@@ -6,7 +6,7 @@
 /*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:45:32 by hjang             #+#    #+#             */
-/*   Updated: 2025/11/07 16:48:37 by hjang            ###   ########.fr       */
+/*   Updated: 2025/11/29 10:46:53 by hjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sl_init_minimap(t_sl *sl)
 	sl->minimap.fov = (2 * atan(0.66));
 	sl->minimap.num_rays = 200;
 	sl->minimap.ray_step = 0.05;
-	sl->minimap.max_ray_dist = 30;
+	sl->minimap.max_ray_dist = 50;
 	if ((double)sl->mapinfo.x / (double)sl->mapinfo.y > 1.73)
 		sl->minimap.minimap_scale = 260 / sl->mapinfo.x;
 	else

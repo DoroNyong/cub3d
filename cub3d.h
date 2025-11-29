@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjang <hjang@student.42.fr>                +#+  +:+       +#+        */
+/*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:27:06 by hjang             #+#    #+#             */
-/*   Updated: 2025/11/07 16:44:24 by hjang            ###   ########.fr       */
+/*   Updated: 2025/11/29 13:56:02 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,15 +203,17 @@ typedef struct s_sl
 int		main(int argc, char **argv);
 void	free_map(t_sl *sl, int index);
 void	free_texture_paths(t_sl *sl);
+char	*skip_whitespace(char *str);
 
 //event_map
 void	map_check(t_sl *sl, char *map_name);
 void	map_exception(char *map_name, char **full_file, char ***lines);
-void	parse_config_lines(t_sl *sl, char **lines);
-char	*skip_whitespace(char *str);
-void	parsing_texture(t_sl *sl, char **line);
-void	parsing_colors(t_sl *sl, char **lines);
-void	process_map_lines(t_sl *sl, char **lines);
+int		parse_config_lines(t_sl *sl, char **lines);
+int		parsing_texture(t_sl *sl, char *line);
+int		parsing_colors(t_sl *sl, char *lines);
+int		check_setting(t_sl *sl, char **lines, int i);
+void	handle_error(t_sl *sl, char **lines, const char *message);
+void	process_map_lines(t_sl *sl, char **lines, int map_start_idx);
 int		map_make(t_sl *sl, char *map_str);
 void	map_per_init(t_sl *sl, char *map_str);
 int		map_str_check(t_sl *sl, char *map_name);

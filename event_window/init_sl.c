@@ -45,7 +45,6 @@ static void	sl_init_mouse(t_sl *sl)
 	sl->mouse.prev_x = -1;
 	sl->mouse.smooth_dx = 0.0;
 	sl->mouse.prev_x = sl->data.screen_width / 2;
-//	mlx_mouse_hide(sl->data.mlx, sl->data.win);
 }
 
 static void	sl_init_etc(t_sl *sl)

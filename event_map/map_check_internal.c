@@ -6,31 +6,13 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:45:54 by byeolee           #+#    #+#             */
-/*   Updated: 2025/11/07 15:38:30 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/29 13:23:38 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int	is_map_line(char *line)
-{
-	int	i;
-
-	i = 0;
-	if (!line || line[0] == '\0')
-		return (0);
-	while (line[i] && line[i] != '\n')
-	{
-		if (line[i] != ' ' && line[i] != '1' && line[i] != '0' && \
-			line[i] != 'N' && line[i] != 'S' && line[i] != 'E' && \
-			line[i] != 'W')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-static char	*concatenate_map_lines(char **lines)
+static char	*concatenate_map_lines(char **lines, int start_idx)
 {
 	char	*map_only_str;
 	char	*temp;
@@ -42,7 +24,7 @@ static char	*concatenate_map_lines(char **lines)
 	i = 0;
 	while (lines[i])
 	{
-		if (is_map_line(lines[i]))
+		if (i >= start_idx)
 		{
 			temp = map_only_str;
 			map_only_str = ft_strjoin(temp, lines[i]);
@@ -75,10 +57,10 @@ static void	create_map(t_sl *sl, char *map_only_str)
 	free(map_only_str);
 }
 
-void	process_map_lines(t_sl *sl, char **lines)
+void	process_map_lines(t_sl *sl, char **lines, int map_start_idx)
 {
 	char	*map_only_str;
 
-	map_only_str = concatenate_map_lines(lines);
+	map_only_str = concatenate_map_lines(lines, map_start_idx);
 	create_map(sl, map_only_str);
 }

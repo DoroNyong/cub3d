@@ -6,18 +6,11 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:46:12 by byeolee           #+#    #+#             */
-/*   Updated: 2025/11/07 15:33:17 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/11/29 13:58:08 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-char	*skip_whitespace(char *str)
-{
-	while (*str && (*str == ' ' || *str == '\t'))
-		str++;
-	return (str);
-}
 
 static void	free_lines(char **lines)
 {
@@ -34,7 +27,7 @@ static void	free_lines(char **lines)
 	free(lines);
 }
 
-static void	handle_error(t_sl *sl, char **lines, const char *message)
+void	handle_error(t_sl *sl, char **lines, const char *message)
 {
 	printf("Error\n%s\n", message);
 	free_texture_paths(sl);
@@ -65,9 +58,25 @@ static void	checking_parsing(t_sl *sl, char **lines)
 		handle_error(sl, lines, "c_color is missing.");
 }
 
-void	parse_config_lines(t_sl *sl, char **lines)
+int	parse_config_lines(t_sl *sl, char **lines)
 {
-	parsing_texture(sl, lines);
-	parsing_colors(sl, lines);
+	int		i;
+	char	*line;
+
+	i = 0;
+	while (lines[i])
+	{
+		line = skip_whitespace(lines[i]);
+		if (*line == '\0')
+		{
+			i++;
+			continue ;
+		}
+		if (parsing_texture(sl, line) || parsing_colors(sl, line))
+			i++;
+		else
+			return (check_setting(sl, lines, i));
+	}
 	checking_parsing(sl, lines);
+	return (i);
 }
