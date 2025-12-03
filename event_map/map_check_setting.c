@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:46:12 by byeolee           #+#    #+#             */
-/*   Updated: 2025/11/29 13:58:08 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/12/03 16:25:46 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,6 @@ void	handle_error(t_sl *sl, char **lines, const char *message)
 	exit(1);
 }
 
-static void	checking_parsing(t_sl *sl, char **lines)
-{
-	if (sl->config.no_count == 0)
-		handle_error(sl, lines, "no_path is missing.");
-	if (sl->config.so_count == 0)
-		handle_error(sl, lines, "so_path is missing.");
-	if (sl->config.we_count == 0)
-		handle_error(sl, lines, "we_path is missing.");
-	if (sl->config.ea_count == 0)
-		handle_error(sl, lines, "ea_path is missing.");
-	if (sl->config.f_count != 1)
-		handle_error(sl, lines, "Enter floor color less or more than one.");
-	if (sl->config.c_count != 1)
-		handle_error(sl, lines, "Enter ceiling color less or more than one.");
-	if (sl->config.f_color == -1)
-		handle_error(sl, lines, "f_color is missing.");
-	if (sl->config.c_color == -1)
-		handle_error(sl, lines, "c_color is missing.");
-}
-
 int	parse_config_lines(t_sl *sl, char **lines)
 {
 	int		i;
@@ -72,7 +52,7 @@ int	parse_config_lines(t_sl *sl, char **lines)
 			i++;
 			continue ;
 		}
-		if (parsing_texture(sl, line) || parsing_colors(sl, line))
+		if (parsing_texture(sl, line) || parsing_colors(sl, line, lines))
 			i++;
 		else
 			return (check_setting(sl, lines, i));

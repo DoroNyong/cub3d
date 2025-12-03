@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-static void	checking_parsing(t_sl *sl, char **lines)
+void	checking_parsing(t_sl *sl, char **lines)
 {
 	if (sl->config.no_count == 0)
 		handle_error(sl, lines, "no_path is missing.");
@@ -30,15 +30,6 @@ static void	checking_parsing(t_sl *sl, char **lines)
 		handle_error(sl, lines, "f_color is missing.");
 	if (sl->config.c_color == -1)
 		handle_error(sl, lines, "c_color is missing.");
-}
-
-static int	check_setting_exist(t_sl *sl)
-{
-	if (sl->config.no_count == 0 || sl->config.so_count == 0 || \
-		sl->config.we_count == 0 || sl->config.ea_count == 0 || \
-		sl->config.f_count == 0 || sl->config.c_count == 0)
-		return (0);
-	return (1);
 }
 
 static int	check_settings_last(char **lines, int i)
@@ -67,12 +58,8 @@ static int	check_settings_last(char **lines, int i)
 
 int	check_setting(t_sl *sl, char **lines, int i)
 {
-	if (!check_setting_exist(sl))
-	{
-		if (check_settings_last(lines, i))
-			handle_error(sl, lines, "Map must be entered after setting value");
-		else
-			checking_parsing(sl, lines);
-	}
+	if (check_settings_last(lines, i))
+		handle_error(sl, lines, "Map must be entered after setting value");
+	checking_parsing(sl, lines);
 	return (i);
 }

@@ -6,11 +6,11 @@
 #    By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 15:57:55 by hjang             #+#    #+#              #
-#    Updated: 2025/11/29 13:54:09 by byeolee          ###   ########.fr        #
+#    Updated: 2025/12/03 16:31:32 by byeolee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 SRCS =	main.c \
 		event_window/event.c \
