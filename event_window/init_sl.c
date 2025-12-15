@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:45:32 by hjang             #+#    #+#             */
-/*   Updated: 2025/11/05 17:11:53 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:17:10 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	sl_init_etc(t_sl *sl)
 	sl->playerinfo.rot_speed = 0.001;
 	sl->anim.frame_delay = 1000;
 	sl->anim.frame_counter = 0;
+	sl->full_file = NULL;
 }
 
 void	sl_init(t_sl *sl)

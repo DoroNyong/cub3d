@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:27:06 by hjang             #+#    #+#             */
-/*   Updated: 2025/12/03 16:24:02 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/12/15 14:59:21 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,7 @@ typedef struct s_sl
 	t_anim			anim;
 	t_config		config;
 	char			**map;
+	char			*full_file;
 }	t_sl;
 
 //main
@@ -214,6 +215,7 @@ int		parsing_colors(t_sl *sl, char *line, char **lines);
 int		check_setting(t_sl *sl, char **lines, int i);
 void	checking_parsing(t_sl *sl, char **lines);
 void	handle_error(t_sl *sl, char **lines, const char *message);
+void	map_empty_line_check(t_sl *sl, char *full_file, char **lines, int map_start_idx);
 void	process_map_lines(t_sl *sl, char **lines, int map_start_idx);
 int		map_make(t_sl *sl, char *map_str);
 void	map_per_init(t_sl *sl, char *map_str);

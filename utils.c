@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 15:41:07 by hjang             #+#    #+#             */
-/*   Updated: 2025/11/29 13:34:18 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:50:58 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	free_texture_paths(t_sl *sl)
 
 char	*skip_whitespace(char *str)
 {
-	while (*str && (*str == ' ' || *str == '\t'))
+	while (*str && (*str == ' ' || (*str >= 9 && *str <= 13)))
 		str++;
 	return (str);
 }

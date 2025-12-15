@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:45:54 by byeolee           #+#    #+#             */
-/*   Updated: 2025/11/29 13:23:38 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:14:03 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,16 @@ static void	create_map(t_sl *sl, char *map_only_str)
 	{
 		free_texture_paths(sl);
 		free(map_only_str);
+		if (sl->full_file)
+			free(sl->full_file);
 		exit(1);
 	}
 	if (!map_make(sl, map_only_str))
 	{
 		free_texture_paths(sl);
 		free(map_only_str);
+		if (sl->full_file)
+			free(sl->full_file);
 		exit(1);
 	}
 	free(map_only_str);

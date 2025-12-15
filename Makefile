@@ -6,7 +6,7 @@
 #    By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 15:57:55 by hjang             #+#    #+#              #
-#    Updated: 2025/12/03 16:31:32 by byeolee          ###   ########.fr        #
+#    Updated: 2025/12/15 14:04:04 by byeolee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS =	main.c \
 		event_map/map_check_setting_texture.c \
 		event_map/map_check_setting_color.c \
 		event_map/map_check_setting_error.c \
+		event_map/map_check_mapline.c\
 		event_map/map_check_internal.c \
 		event_map/map_str_check.c \
 		event_map/map_str_check_validation.c \

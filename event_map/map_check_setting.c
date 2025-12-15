@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:46:12 by byeolee           #+#    #+#             */
-/*   Updated: 2025/12/03 16:25:46 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:52:06 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void	handle_error(t_sl *sl, char **lines, const char *message)
 		free_lines(lines);
 	if (sl->map)
 		free_map(sl, sl->mapinfo.y);
+	if (sl->full_file)
+	{
+		free(sl->full_file);
+		sl->full_file = NULL;
+	}
 	exit(1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:45:51 by byeolee           #+#    #+#             */
-/*   Updated: 2025/11/05 16:45:51 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/12/15 14:21:11 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,10 @@ void	map_exception(char *map_name, char **full_file, char ***lines)
 		exit(1);
 	}
 	*lines = ft_split(*full_file, '\n');
-	free(*full_file);
 	if (!*lines)
 	{
 		printf("Error\n%s\n", "Map read lines failed");
+		free(*full_file);
 		exit(1);
 	}
 }

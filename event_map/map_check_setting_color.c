@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:46:16 by byeolee           #+#    #+#             */
-/*   Updated: 2025/12/03 16:26:48 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:51:41 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ static void	exit_color_error(t_sl *sl, char **lines, char **rgb, char *msg)
 	handle_error(sl, lines, msg);
 }
 
+static int	color_value_check(char *str)
+{
+	str = skip_whitespace(str);
+	if (!*str)
+		return (0);
+	while (*str && ft_isdigit(*str))
+		str++;
+	str = skip_whitespace(str);
+	if (*str != '\0')
+		return (0);
+	return (1);
+}
+
 static void	parse_color(t_sl *sl, char **lines, int *color, char *line)
 {
 	char	**rgb_values;
@@ -34,7 +47,10 @@ static void	parse_color(t_sl *sl, char **lines, int *color, char *line)
 
 	rgb_values = ft_split(line, ',');
 	if (!rgb_values || !rgb_values[0] || !rgb_values[1] || \
-		!rgb_values[2] || rgb_values[3])
+		!rgb_values[2] || rgb_values[3] || \
+		!color_value_check(rgb_values[0]) || \
+		!color_value_check(rgb_values[1]) || \
+		!color_value_check(rgb_values[2]))
 		exit_color_error(sl, lines, rgb_values, \
 						"Invalid RGB color format.");
 	colors.r = ft_atoi(rgb_values[0]);
