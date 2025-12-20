@@ -22,14 +22,14 @@ void	checking_parsing(t_sl *sl, char **lines)
 		handle_error(sl, lines, "we_path is missing.");
 	if (sl->config.ea_count == 0)
 		handle_error(sl, lines, "ea_path is missing.");
-	if (sl->config.f_count != 1)
-		handle_error(sl, lines, "Enter floor color less or more than one.");
-	if (sl->config.c_count != 1)
-		handle_error(sl, lines, "Enter ceiling color less or more than one.");
 	if (sl->config.f_color == -1)
 		handle_error(sl, lines, "f_color is missing.");
 	if (sl->config.c_color == -1)
 		handle_error(sl, lines, "c_color is missing.");
+	if (sl->config.f_count != 1)
+		handle_error(sl, lines, "Enter floor color less or more than one.");
+	if (sl->config.c_count != 1)
+		handle_error(sl, lines, "Enter ceiling color less or more than one.");
 }
 
 static int	check_settings_last(char **lines, int i)
@@ -58,8 +58,8 @@ static int	check_settings_last(char **lines, int i)
 
 int	check_setting(t_sl *sl, char **lines, int i)
 {
+	checking_parsing(sl, lines);
 	if (check_settings_last(lines, i))
 		handle_error(sl, lines, "Map must be entered after setting value");
-	checking_parsing(sl, lines);
 	return (i);
 }
