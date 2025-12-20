@@ -58,8 +58,8 @@ static int	check_settings_last(char **lines, int i)
 
 int	check_setting(t_sl *sl, char **lines, int i)
 {
-	checking_parsing(sl, lines);
 	if (check_settings_last(lines, i))
 		handle_error(sl, lines, "Map must be entered after setting value");
+	checking_parsing(sl, lines);
 	return (i);
 }

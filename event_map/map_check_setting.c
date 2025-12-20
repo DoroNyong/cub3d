@@ -6,7 +6,7 @@
 /*   By: byeolee <byeolee@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:46:12 by byeolee           #+#    #+#             */
-/*   Updated: 2025/12/15 15:52:06 by byeolee          ###   ########.fr       */
+/*   Updated: 2025/12/20 15:38:03 by byeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,13 @@ int	parse_config_lines(t_sl *sl, char **lines)
 		}
 		if (parsing_texture(sl, line) || parsing_colors(sl, line, lines))
 			i++;
-		else
+		else if (*line == '1')
 			return (check_setting(sl, lines, i));
+		else
+		{
+			checking_parsing(sl, lines);
+			handle_error(sl, lines, "Invalid line in configuration file");
+		}
 	}
 	checking_parsing(sl, lines);
 	return (i);
