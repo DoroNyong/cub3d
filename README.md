@@ -1,6 +1,6 @@
-# GhostSurviver
-### 🎬 이미지를 누르면 시연 영상으로 이동합니다.
-[![image](https://github.com/DoroNyong/GhostSurviver/assets/62960758/d1660031-c8c2-46ad-b64d-d9573391937c)](https://youtu.be/urQCWKbKHQQ?si=70AaaC2lUQ_HzFX9)
+# cub3d
+<img width="800" height="450" alt="cub3d" src="https://github.com/user-attachments/assets/d54c1d9a-c5b6-4446-b037-f96be48835aa" />
+
 ## 🖥️ 장르 : TPS 생존 게임 (싱글 플레이)
 사방에서 몰려드는 유령을 총으로 쏘면서 버티는 3D TPS 게임입니다.
 
